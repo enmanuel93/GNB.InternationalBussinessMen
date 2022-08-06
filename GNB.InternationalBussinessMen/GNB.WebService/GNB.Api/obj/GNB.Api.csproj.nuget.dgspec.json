@@ -37,7 +37,17 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Application\\GNB.Application.csproj": {
+                "projectPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Application\\GNB.Application.csproj"
+              },
+              "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain.Entities\\GNB.Domain.Entities.csproj": {
+                "projectPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain.Entities\\GNB.Domain.Entities.csproj"
+              },
+              "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Infrastructure\\GNB.Infrastructure.csproj": {
+                "projectPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Infrastructure\\GNB.Infrastructure.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -69,6 +79,280 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Application\\GNB.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Application\\GNB.Application.csproj",
+        "projectName": "GNB.Application",
+        "projectPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Application\\GNB.Application.csproj",
+        "packagesPath": "C:\\Users\\fcruzm\\.nuget\\packages\\",
+        "outputPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\fcruzm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WinForms.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/nuget": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain.Entities\\GNB.Domain.Entities.csproj": {
+                "projectPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain.Entities\\GNB.Domain.Entities.csproj"
+              },
+              "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain\\GNB.Domain.csproj": {
+                "projectPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain\\GNB.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain.Entities\\GNB.Domain.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain.Entities\\GNB.Domain.Entities.csproj",
+        "projectName": "GNB.Domain.Entities",
+        "projectPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain.Entities\\GNB.Domain.Entities.csproj",
+        "packagesPath": "C:\\Users\\fcruzm\\.nuget\\packages\\",
+        "outputPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain.Entities\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\fcruzm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WinForms.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/nuget": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain\\GNB.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain\\GNB.Domain.csproj",
+        "projectName": "GNB.Domain",
+        "projectPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain\\GNB.Domain.csproj",
+        "packagesPath": "C:\\Users\\fcruzm\\.nuget\\packages\\",
+        "outputPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\fcruzm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WinForms.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/nuget": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain.Entities\\GNB.Domain.Entities.csproj": {
+                "projectPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain.Entities\\GNB.Domain.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Infrastructure\\GNB.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Infrastructure\\GNB.Infrastructure.csproj",
+        "projectName": "GNB.Infrastructure",
+        "projectPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Infrastructure\\GNB.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\fcruzm\\.nuget\\packages\\",
+        "outputPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\fcruzm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WinForms.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/nuget": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain.Entities\\GNB.Domain.Entities.csproj": {
+                "projectPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain.Entities\\GNB.Domain.Entities.csproj"
+              },
+              "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain\\GNB.Domain.csproj": {
+                "projectPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain\\GNB.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

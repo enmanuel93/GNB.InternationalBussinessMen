@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GNB.Domain.Entities\GNB.Domain.Entities.csproj" />
+    <ProjectReference Include="..\GNB.Domain\GNB.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

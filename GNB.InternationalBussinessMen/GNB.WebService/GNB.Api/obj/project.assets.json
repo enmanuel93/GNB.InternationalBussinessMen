@@ -75,6 +75,57 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "GNB.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GNB.Domain": "1.0.0",
+          "GNB.Domain.Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GNB.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GNB.Application.dll": {}
+        }
+      },
+      "GNB.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GNB.Domain.Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GNB.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GNB.Domain.dll": {}
+        }
+      },
+      "GNB.Domain.Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/GNB.Domain.Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GNB.Domain.Entities.dll": {}
+        }
+      },
+      "GNB.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "GNB.Domain": "1.0.0",
+          "GNB.Domain.Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GNB.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GNB.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -185,10 +236,33 @@
         "swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "GNB.Application/1.0.0": {
+      "type": "project",
+      "path": "../GNB.Application/GNB.Application.csproj",
+      "msbuildProject": "../GNB.Application/GNB.Application.csproj"
+    },
+    "GNB.Domain/1.0.0": {
+      "type": "project",
+      "path": "../GNB.Domain/GNB.Domain.csproj",
+      "msbuildProject": "../GNB.Domain/GNB.Domain.csproj"
+    },
+    "GNB.Domain.Entities/1.0.0": {
+      "type": "project",
+      "path": "../GNB.Domain.Entities/GNB.Domain.Entities.csproj",
+      "msbuildProject": "../GNB.Domain.Entities/GNB.Domain.Entities.csproj"
+    },
+    "GNB.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../GNB.Infrastructure/GNB.Infrastructure.csproj",
+      "msbuildProject": "../GNB.Infrastructure/GNB.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "GNB.Application >= 1.0.0",
+      "GNB.Domain.Entities >= 1.0.0",
+      "GNB.Infrastructure >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -232,7 +306,17 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Application\\GNB.Application.csproj": {
+              "projectPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Application\\GNB.Application.csproj"
+            },
+            "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain.Entities\\GNB.Domain.Entities.csproj": {
+              "projectPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Domain.Entities\\GNB.Domain.Entities.csproj"
+            },
+            "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Infrastructure\\GNB.Infrastructure.csproj": {
+              "projectPath": "G:\\HIBERUS\\GNB.InternationalBussinessMen\\GNB.InternationalBussinessMen\\GNB.WebService\\GNB.Infrastructure\\GNB.Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
