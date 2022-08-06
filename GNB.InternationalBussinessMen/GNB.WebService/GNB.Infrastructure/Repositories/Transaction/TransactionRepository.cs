@@ -1,5 +1,6 @@
 ﻿using GNB.Domain.repositories.contracts;
 using GNB.Infrastructure.Data;
+using GNB.Infrastructure.infrastructure.Provider;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,11 @@ namespace GNB.Infrastructure.Repositories.Transaction
         public async Task<IEnumerable<Domain.Entities.Models.Transaction>> GetAll()
         {
             return await gNBContext.Transactions.ToListAsync();
+        }
+
+        public async Task<IEnumerable<Domain.Entities.Models.Transaction>> GetAllTransactionsFromProvider()
+        {
+            return await TransactionProvider.GetTransactions();
         }
     }
 }

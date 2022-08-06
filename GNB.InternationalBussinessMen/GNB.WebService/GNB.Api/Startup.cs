@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
+using GNB.Api.Helpers;
 
 namespace GNB.Api
 {
@@ -25,16 +26,16 @@ namespace GNB.Api
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             #region Context
-
             services.AddDbContext<GNBContext>(optionsAction => {
                 optionsAction.UseSqlServer(Configuration.GetConnectionString("ConnectionStrings"));
             });
-
             #endregion
+
+            //this extension method allow to register all services
+            services.AddServices();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

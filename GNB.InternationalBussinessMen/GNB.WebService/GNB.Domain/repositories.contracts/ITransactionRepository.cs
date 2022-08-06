@@ -9,6 +9,7 @@ namespace GNB.Domain.repositories.contracts
 {
     public interface ITransactionRepository
     {
+        Task<IEnumerable<Transaction>> GetAllTransactionsFromProvider();
         Task<IEnumerable<Transaction>> GetAll();
         Task DeleteRange(List<Transaction> transactions);
         Task AddRage(List<Transaction> transactions);

@@ -15,8 +15,4 @@
     <ProjectReference Include="..\GNB.Domain\GNB.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="infrastructure.services\" />
-  </ItemGroup>
-
 </Project>

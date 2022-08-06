@@ -9,6 +9,7 @@ namespace GGNB.Domain.repositories.contracts
 {
     public interface IRateRepository
     {
+        Task<IEnumerable<Rate>> GetAllRatesFromProvider();
         Task<IEnumerable<Rate>> GetAll();
         Task DeleteRange(List<Rate> rates);
         Task AddRage(List<Rate> rates);

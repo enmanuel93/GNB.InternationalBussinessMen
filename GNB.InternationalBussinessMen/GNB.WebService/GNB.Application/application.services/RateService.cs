@@ -1,4 +1,5 @@
 ﻿using GGNB.Domain.repositories.contracts;
+using GNB.Domain.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GNB.Application.application.services
 {
-    public class RateService
+    public class RateService: IRateService
     {
         private readonly IRateRepository _rateRepository;
 
@@ -16,6 +17,10 @@ namespace GNB.Application.application.services
             this._rateRepository = rateRepository;
         }
 
-
+        public async Task<List<Rate>> GetAllRatesFromProv()
+        {
+            var result = await _rateRepository.GetAllRatesFromProvider();
+            return result.ToList();
+        }
     }
 }

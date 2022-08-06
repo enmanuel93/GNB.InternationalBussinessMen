@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GGNB.Domain.repositories.contracts;
+using GNB.Infrastructure.infrastructure.Provider;
 
 namespace GNB.Infrastructure.Repositories.Rate
 {
@@ -34,6 +35,11 @@ namespace GNB.Infrastructure.Repositories.Rate
         public async Task<IEnumerable<Domain.Entities.Models.Rate>> GetAll()
         {
             return await gNBContext.Rates.ToListAsync();
+        }
+
+        public async Task<IEnumerable<Domain.Entities.Models.Rate>> GetAllRatesFromProvider()
+        {
+            return await RateProvider.GetRates();
         }
     }
 }
