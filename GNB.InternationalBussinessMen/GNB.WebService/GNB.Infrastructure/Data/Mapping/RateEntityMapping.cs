@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace GNB.Infrastructure.Data.Mapping
 {
-    public class RateEntityMapping : IEntityTypeConfiguration<Rate>
+    public class RateEntityMapping : IEntityTypeConfiguration<RateModel>
     {
-        public void Configure(EntityTypeBuilder<Rate> builder)
+        public void Configure(EntityTypeBuilder<RateModel> builder)
         {
             builder.ToTable("Rate", "GNB");
             builder.HasKey(x => x.Id);
-            builder.Property(e => e.RateProp).HasColumnName("Rate");
-            builder.Property(e => e.To).HasColumnName("To");
-            builder.Property(e => e.From).HasColumnName("From");
+            builder.Property(e => e.Rate).HasColumnName("rate");
+            builder.Property(e => e.To).HasColumnName("toR");
+            builder.Property(e => e.From).HasColumnName("fromR");
         }
     }
 }

@@ -13,7 +13,7 @@ namespace GNB.Domain.Entities.Models
         public string Sku { get; set; }
 
         [JsonProperty("amount")]
-        public string Amount { get; set; }
+        public decimal Amount { get; set; }
 
         [JsonProperty("currency")]
         public string Currency { get; set; }

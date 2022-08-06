@@ -1,4 +1,5 @@
-﻿using GGNB.Domain.repositories.contracts;
+﻿using AutoMapper;
+using GGNB.Domain.repositories.contracts;
 using GNB.Domain.Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace GNB.Application.application.services
             this._rateRepository = rateRepository;
         }
 
-        public async Task<List<Rate>> GetAllRatesFromProv()
+        public async Task<List<RateModel>> GetAllRatesFromProv()
         {
             var result = await _rateRepository.GetAllRatesFromProvider();
             return result.ToList();

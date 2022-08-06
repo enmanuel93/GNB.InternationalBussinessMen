@@ -9,6 +9,6 @@ namespace GNB.Application.application.services
 {
     public interface IRateService
     {
-        Task<List<Rate>> GetAllRatesFromProv();
+        Task<List<RateModel>> GetAllRatesFromProv();
     }
 }

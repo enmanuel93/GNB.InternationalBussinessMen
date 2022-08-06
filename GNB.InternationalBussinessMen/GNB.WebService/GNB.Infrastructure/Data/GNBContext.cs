@@ -18,7 +18,7 @@ namespace GNB.Infrastructure.Data
 
         }
 
-        public DbSet<Rate> Rates { get; set; }
+        public DbSet<RateModel> Rates { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) => modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

@@ -1,4 +1,5 @@
-﻿using GNB.Domain.Entities.Models;
+﻿using AutoMapper;
+using GNB.Domain.Entities.Models;
 using GNB.Domain.repositories.contracts;
 using System;
 using System.Collections.Generic;

@@ -14,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using GNB.Api.Helpers;
+using AutoMapper;
 
 namespace GNB.Api
 {
@@ -36,6 +37,7 @@ namespace GNB.Api
 
             //this extension method allow to register all services
             services.AddServices();
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

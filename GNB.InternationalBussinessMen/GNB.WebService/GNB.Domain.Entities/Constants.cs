@@ -8,6 +8,6 @@ namespace GNB.Domain.Entities
 {
     public class Constants
     {
-        public static string Herokuapp = "http://quiet-stone-2094.herokuapp.com";
+        public static readonly string Herokuapp = "http://quiet-stone-2094.herokuapp.com";
     }
 }

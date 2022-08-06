@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GNB.Domain.Entities.Models
 {
-    public class Rate: BaseModel
+    public class RateModel : BaseModel
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -16,6 +16,6 @@ namespace GNB.Domain.Entities.Models
         public string To { get; set; }
 
         [JsonProperty("rate")]
-        public string RateProp { get; set; }
+        public decimal Rate { get; set; }
     }
 }
