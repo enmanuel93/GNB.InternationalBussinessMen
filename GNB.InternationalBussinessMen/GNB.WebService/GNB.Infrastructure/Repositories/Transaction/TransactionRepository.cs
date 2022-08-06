@@ -1,4 +1,4 @@
-﻿using GNB.Domain.Contracts;
+﻿using GNB.Domain.repositories.contracts;
 using GNB.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;

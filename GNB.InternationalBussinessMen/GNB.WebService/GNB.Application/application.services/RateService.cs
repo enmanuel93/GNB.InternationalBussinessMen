@@ -1,4 +1,4 @@
-﻿using GNB.Domain.Contracts;
+﻿using GGNB.Domain.repositories.contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;

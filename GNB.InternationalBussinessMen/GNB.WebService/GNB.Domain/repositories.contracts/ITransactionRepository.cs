@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GNB.Domain.Contracts
+namespace GNB.Domain.repositories.contracts
 {
     public interface ITransactionRepository
     {
