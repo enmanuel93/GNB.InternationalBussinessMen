@@ -13,11 +13,6 @@ namespace GNB.Infrastructure.Data
     {
         public GNBContext(DbContextOptions<GNBContext> options) : base(options) {}
 
-        public GNBContext()
-        {
-
-        }
-
         public DbSet<RateModel> Rates { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 

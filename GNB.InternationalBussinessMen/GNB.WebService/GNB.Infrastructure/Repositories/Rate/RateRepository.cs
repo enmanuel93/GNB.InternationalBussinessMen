@@ -15,9 +15,9 @@ namespace GNB.Infrastructure.Repositories.Rate
     {
         private GNBContext gNBContext;
 
-        public RateRepository()
+        public RateRepository(GNBContext _gNBContext)
         {
-            gNBContext = new GNBContext();
+            gNBContext = _gNBContext;
         }
 
         public async Task AddRage(List<Domain.Entities.Models.RateModel> rates)
@@ -32,14 +32,8 @@ namespace GNB.Infrastructure.Repositories.Rate
             await gNBContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Domain.Entities.Models.RateModel>> GetAll()
-        {
-            return await gNBContext.Rates.ToListAsync();
-        }
+        public async Task<IEnumerable<Domain.Entities.Models.RateModel>> GetAll() => await gNBContext.Rates.ToListAsync();
 
-        public async Task<IEnumerable<Domain.Entities.Models.RateModel>> GetAllRatesFromProvider()
-        {
-            return await RateProvider.GetRates();
-        }
+        public async Task<IEnumerable<Domain.Entities.Models.RateModel>> GetAllRatesFromProvider() => await RateProvider.GetRates();
     }
 }

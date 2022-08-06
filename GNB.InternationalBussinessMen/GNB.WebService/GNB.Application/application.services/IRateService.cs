@@ -10,5 +10,6 @@ namespace GNB.Application.application.services
     public interface IRateService
     {
         Task<List<RateModel>> GetAllRatesFromProv();
+        Task ResetDataFromRateTable(List<RateModel> rates);
     }
 }

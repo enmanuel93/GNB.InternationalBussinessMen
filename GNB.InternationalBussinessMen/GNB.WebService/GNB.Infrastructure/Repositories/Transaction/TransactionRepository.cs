@@ -14,9 +14,9 @@ namespace GNB.Infrastructure.Repositories.Transaction
     {
         private GNBContext gNBContext;
 
-        public TransactionRepository()
+        public TransactionRepository(GNBContext _gNBContext)
         {
-            gNBContext = new GNBContext();
+            gNBContext = _gNBContext;
         }
 
         public async Task AddRage(List<Domain.Entities.Models.Transaction> transactions)
@@ -31,14 +31,9 @@ namespace GNB.Infrastructure.Repositories.Transaction
             await gNBContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Domain.Entities.Models.Transaction>> GetAll()
-        {
-            return await gNBContext.Transactions.ToListAsync();
-        }
+        public async Task<IEnumerable<Domain.Entities.Models.Transaction>> GetAll() => await gNBContext.Transactions.ToListAsync();
 
-        public async Task<IEnumerable<Domain.Entities.Models.Transaction>> GetAllTransactionsFromProvider()
-        {
-            return await TransactionProvider.GetTransactions();
-        }
+        public async Task<IEnumerable<Domain.Entities.Models.Transaction>> GetAllTransactionsFromProvider() => await TransactionProvider.GetTransactions();
+        
     }
 }
