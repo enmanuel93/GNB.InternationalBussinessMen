@@ -15,7 +15,7 @@ namespace GNB.Infrastructure.Data.Mapping
         {
             builder.ToTable("Rate", "GNB");
             builder.HasKey(x => x.Id);
-            builder.Property(e => e.Rate).HasColumnName("rate");
+            builder.Property(e => e.Rate).HasColumnName("rate").HasColumnType("decimal(11, 4)");
             builder.Property(e => e.To).HasColumnName("toR");
             builder.Property(e => e.From).HasColumnName("fromR");
         }

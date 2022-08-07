@@ -1,6 +1,7 @@
 ﻿using GNB.Api.DTOs;
 using GNB.Api.Helpers;
 using GNB.Application.application.services;
+using GNB.Domain.Entities.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -15,13 +16,24 @@ namespace GNB.Api.Controllers
     public class ProductsTransactionsController : Controller
     {
         private readonly IRateService _rateService;
-        private readonly ITransactionService _transactionService;
+        private readonly ITransactionService _transactionService; 
+        private readonly IProductService _productService;
 
-        public ProductsTransactionsController(IRateService rateService, ITransactionService transactionService)
+        public ProductsTransactionsController(IRateService rateService, ITransactionService transactionService, IProductService productService)
         {
             this._rateService = rateService;
             this._transactionService = transactionService;
+            this._productService = productService;
         }
+
+        /// <summary>
+        /// conversion de monedas ejemplo
+        /// 10 USD A EURO
+        /// 10 / 1.359 = 7.35
+        /// 7.35 + 7.63 = 14.98
+        /// </summary>
+        /// <param name="uskId"></param>
+        /// <returns></returns>
 
         [HttpGet("{uskId}")]
         public async Task<IActionResult> Index(string uskId)
@@ -31,8 +43,15 @@ namespace GNB.Api.Controllers
             try
             {
                 var _transactions = await _transactionService.FilterTransactionsByUskId(uskId);
-                var _rates = await _rateService.GetAllRatesFromProv();
-                response.Data = new ProductDto { TotalAmount = 0, transactions = _transactions };
+                //var _rates = await _rateService.GetAllRatesFromProv();
+
+                var _rates = await _rateService.GetAllRatesFromDb();
+
+                string descriptionEnum = Target.EUR.GetEnumDescription(); 
+
+                var products = await _productService.GetTransactionsInTargetCurrency(descriptionEnum, _transactions, _rates.ToList());
+
+                response.Data = null;
                 response.StatusCode = System.Net.HttpStatusCode.OK;
                 response.ErrorMessage = null;
                 return Ok(response);

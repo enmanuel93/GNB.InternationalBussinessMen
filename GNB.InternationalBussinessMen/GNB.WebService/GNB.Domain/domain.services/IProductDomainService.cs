@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GNB.Domain.Entities.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,6 @@ namespace GNB.Domain.domain.services
 {
     public interface IProductDomainService
     {
-        void ConvertCurrency();
-        decimal SumCurrencyByUsk();
+        void ConvertToCurrencyTarget(string target, List<Transaction> transactions, List<RateModel> rates);
     }
 }

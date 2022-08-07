@@ -58,9 +58,10 @@ namespace GNB.Application.application.services
         {
             try
             {
-                var transactions = await GetAllTransactionsFromProv();
-                string us = transactions.FirstOrDefault().Sku;
-                return transactions.Where(x => x.Sku == us).ToList();
+                //var transactions = await GetAllTransactionsFromProv();
+                //string us = transactions.FirstOrDefault().Sku;
+                var transactions = await _transactioRepository.GetAll();
+                return transactions.Where(x => x.Sku == uskId).ToList();
             }
             catch (Exception ex)
             {

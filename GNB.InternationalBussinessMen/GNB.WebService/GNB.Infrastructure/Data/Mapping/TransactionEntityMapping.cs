@@ -11,7 +11,7 @@ namespace GNB.Infrastructure.Data.Mapping
             builder.ToTable("Transactions", "GNB");
             builder.HasKey(x => x.Id);
             builder.Property(e => e.Sku).HasColumnName("sku");
-            builder.Property(e => e.Amount).HasColumnName("amount");
+            builder.Property(e => e.Amount).HasColumnName("amount").HasColumnType("decimal(11, 4)"); 
             builder.Property(e => e.Currency).HasColumnName("currency");
         }
     }
