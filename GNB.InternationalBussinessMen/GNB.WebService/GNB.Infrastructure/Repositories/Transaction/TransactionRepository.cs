@@ -16,7 +16,7 @@ namespace GNB.Infrastructure.Repositories.Transaction
 
         public TransactionRepository(GNBContext _gNBContext)
         {
-            gNBContext = _gNBContext;
+            gNBContext =_gNBContext;
         }
 
         public async Task AddRage(List<Domain.Entities.Models.Transaction> transactions)

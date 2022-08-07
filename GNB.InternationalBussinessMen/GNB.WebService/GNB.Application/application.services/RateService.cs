@@ -43,7 +43,9 @@ namespace GNB.Application.application.services
         {
             try
             {
-                await _rateRepository.DeleteRange(rates);
+                var result = await GetAllRatesFromDb();
+                if (result.Any())
+                    await _rateRepository.DeleteRange(result.ToList());
                 await _rateRepository.AddRage(rates);
             }
             catch (Exception ex)

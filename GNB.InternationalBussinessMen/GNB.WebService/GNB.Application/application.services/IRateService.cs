@@ -11,5 +11,6 @@ namespace GNB.Application.application.services
     {
         Task<List<RateModel>> GetAllRatesFromProv();
         Task ResetDataFromRateTable(List<RateModel> rates);
+        Task<IEnumerable<RateModel>> GetAllRatesFromDb();
     }
 }

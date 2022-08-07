@@ -30,14 +30,14 @@ namespace GNB.Api
         public void ConfigureServices(IServiceCollection services)
         {
             #region Context
+            string conn = Configuration.GetConnectionString("GNBContext");
             services.AddDbContext<GNBContext>(optionsAction => {
-                optionsAction.UseSqlServer(Configuration.GetConnectionString("ConnectionStrings"));
+                optionsAction.UseSqlServer(conn);
             });
             #endregion
 
             //this extension method allow to register all services
             services.AddServices();
-            services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

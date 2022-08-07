@@ -10,5 +10,7 @@ namespace GNB.Application.application.services
     public interface ITransactionService
     {
         Task<List<Transaction>> GetAllTransactionsFromProv();
+        Task ResetDataFromTransactionTable(List<Transaction> rates);
+        Task<IEnumerable<Transaction>> GetAllTransactionsFromDb();
     }
 }
