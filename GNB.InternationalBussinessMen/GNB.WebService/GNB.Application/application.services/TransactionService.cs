@@ -19,9 +19,41 @@ namespace GNB.Application.application.services
         }
 
         public async Task<List<Transaction>> GetAllTransactionsFromProv()
-        {
-            var result = await _transactioRepository.GetAllTransactionsFromProvider();
+        {           
+            IEnumerable<Transaction> result = new List<Transaction>();
+
+            try
+            {
+                result = await _transactioRepository.GetAllTransactionsFromProvider();
+                var transactions = result.ToList();
+
+                await ResetDataFromTransactionTable(transactions);
+                return result.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            result = await GetAllTransactionsFromDb();
             return result.ToList();
         }
+
+        public async Task ResetDataFromTransactionTable(List<Transaction> transactions)
+        {
+            try
+            {
+                var result = await GetAllTransactionsFromDb();
+                if (result.Any())
+                    await _transactioRepository.DeleteRange(result.ToList());
+                await _transactioRepository.AddRage(transactions);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<Transaction>> GetAllTransactionsFromDb() => await _transactioRepository.GetAll();
     }
 }
