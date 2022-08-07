@@ -1,5 +1,6 @@
 ﻿using GGNB.Domain.repositories.contracts;
 using GNB.Application.application.services;
+using GNB.Domain.domain.services;
 using GNB.Domain.repositories.contracts;
 using GNB.Infrastructure.Repositories.Rate;
 using GNB.Infrastructure.Repositories.Transaction;
@@ -17,7 +18,9 @@ namespace GNB.Api.Helpers
         {
             if (services is null)
                 return services;
-            
+
+            services.AddScoped<IProductDomainService, ProductDomainService>();
+            services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ITransactionService, TransactionService>();
             services.AddScoped<IRateService, RateService>();
             services.AddScoped<IRateRepository, RateRepository>();

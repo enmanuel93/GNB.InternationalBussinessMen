@@ -12,5 +12,7 @@ namespace GNB.Application.application.services
         Task<List<Transaction>> GetAllTransactionsFromProv();
         Task ResetDataFromTransactionTable(List<Transaction> transactions);
         Task<IEnumerable<Transaction>> GetAllTransactionsFromDb();
+
+        Task<List<Transaction>> FilterTransactionsByUskId(string uskId);
     }
 }

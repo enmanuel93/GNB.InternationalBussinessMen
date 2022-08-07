@@ -20,10 +20,18 @@ namespace GNB.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetTransactions()
         {
-            var result = await _transactionService.GetAllTransactionsFromProv();
-            return Ok(result);
+            try
+            {
+                var result = await _transactionService.GetAllTransactionsFromProv();
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }            
         }
     }
 }

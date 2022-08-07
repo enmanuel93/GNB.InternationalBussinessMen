@@ -20,10 +20,17 @@ namespace GNB.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetRates()
         {
-            var result = await _rateService.GetAllRatesFromProv();
-            return Ok(result);
+            try
+            {
+                var result = await _rateService.GetAllRatesFromProv();
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                throw;
+            }            
         }
     }
 }

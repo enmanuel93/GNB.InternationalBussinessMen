@@ -54,6 +54,20 @@ namespace GNB.Application.application.services
             }
         }
 
+        public async Task<List<Transaction>> FilterTransactionsByUskId(string uskId)
+        {
+            try
+            {
+                var transactions = await GetAllTransactionsFromProv();
+                string us = transactions.FirstOrDefault().Sku;
+                return transactions.Where(x => x.Sku == us).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public async Task<IEnumerable<Transaction>> GetAllTransactionsFromDb() => await _transactioRepository.GetAll();
     }
 }

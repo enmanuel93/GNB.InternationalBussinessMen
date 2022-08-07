@@ -34,6 +34,5 @@ namespace GNB.Infrastructure.Repositories.Transaction
         public async Task<IEnumerable<Domain.Entities.Models.Transaction>> GetAll() => await gNBContext.Transactions.ToListAsync();
 
         public async Task<IEnumerable<Domain.Entities.Models.Transaction>> GetAllTransactionsFromProvider() => await TransactionProvider.GetTransactions();
-        
     }
 }
