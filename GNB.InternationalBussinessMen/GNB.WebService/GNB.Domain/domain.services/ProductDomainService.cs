@@ -13,7 +13,8 @@ namespace GNB.Domain.domain.services
         //private List<Transaction> unmatchedCurrencyTargetTransactions;
         //private List<>
 
-        private List<RateModel> matchedCurrencyTargetRates;
+        private List<RateModel> matchedCurrencyTargeRates;
+        private List<RateModel> matchedTargetRates;
 
         public ProductDomainService()
         {
@@ -24,23 +25,38 @@ namespace GNB.Domain.domain.services
 
         public void ConvertToCurrencyTarget(string target, List<Transaction> transactions, List<RateModel> rates)
         {
+            //gets the currencies which don't need to be converted
             var matchedCurrencyTargetTransactions = transactions.Where(x => x.Currency == target).ToList();
-            var unmatchedCurrencyTargetTransactions = transactions.Where(x => x.Currency != target).ToList();
-            matchedCurrencyTargetRates = rates.Where(x => x.To == target).ToList();
+
+            //gets the currencies which need to be converted
+            var unmatchedCurrencyTargetTransactions = transactions.Where(x => x.Currency != target).OrderBy(o => o.Currency).ToList();
+
+            matchedCurrencyTargeRates = rates.Where(x => x.To == target).ToList();
+
+            var unmatchedCurrencyTargetRates = rates.Where(r => r.From != target).ToList();
 
             //ejemplo
             var example = unmatchedCurrencyTargetTransactions.Where(u => u.Currency == "CAD").ToList();
-            ConvertCurrenyToRateTarget(example);
+            ConvertCurrenyToRateTarget(example, unmatchedCurrencyTargetRates);
         }
 
         /// <summary>
         /// this method is going to work with the convertion of the currency 
         /// </summary>
         /// <returns></returns>
-        private List<Transaction> ConvertCurrenyToRateTarget(List<Transaction> unmatchedTransactions)
+        private List<Transaction> ConvertCurrenyToRateTarget(List<Transaction> unmatchedTransactions, List<RateModel> matchedTargetRates)
         {
-            //unmatchedTransactions
+            int count = 0;
+            matchedTargetRates = new List<RateModel>();
 
+            foreach (var rt in matchedTargetRates)
+            {
+                foreach (var rtT in matchedCurrencyTargeRates)
+                {
+                    if (rt.To == rtT.From)
+                        matchedTargetRates.Add(rt);
+                }
+            }
             return null;
         }
     }
