@@ -1,5 +1,5 @@
-import { BiCog } from "react-icons/bi";
-import { FaHome, FaUser } from "react-icons/fa";
+import { FaHome, FaExchangeAlt, FaMoneyBillAlt} from "react-icons/fa";
+import {AiOutlineTransaction} from 'react-icons/ai';
 
 
 export const RoutesConfig = [
@@ -7,16 +7,16 @@ export const RoutesConfig = [
   {
     path: "/products",
     name: "Products",
-    icon: <FaUser />,
+    icon: <AiOutlineTransaction />,
   },
   {
     path: "/rates",
     name: "Rates",
-    icon: <BiCog />,
+    icon: <FaMoneyBillAlt />,
   },
   {
     path: "/transactions",
     name: "Transactions",
-    icon: <BiCog />,
+    icon: <FaExchangeAlt />,
   },
 ];

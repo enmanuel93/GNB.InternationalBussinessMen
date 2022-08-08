@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FaBars, FaHome, FaUser } from "react-icons/fa";
-import { BiCog, BiSearch } from "react-icons/bi";
+import { FaBars} from "react-icons/fa";
+import { BiSearch } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import { RoutesConfig } from "../utils/Routes-config";
 import {inputAnimation, showAnimation} from "../types/animation-config";
