@@ -19,6 +19,74 @@ namespace GNB.Domain.domain.services
         {
         }
 
+        //DELETE THIS METHOD IS ONLY FOR TESTS
+        public ProductDto ConvertToCurrencyTarget1(string target, List<Transaction> transactions, List<RateModel> rates)
+        {
+            //gets the currencies which don't need to be converted
+            var transactionsInCurrentTarget = transactions.Where(x => x.Currency == target).ToList();
+
+            //gets the currencies which need to be converted
+            var transactionsToCarryToTargetCurrency = transactions.Where(x => x.Currency != target).OrderBy(o => o.Currency).ToList();
+
+            //gets the rates which match with the currency target
+            currencyExchangeRatesThatMatchTarget = rates.Where(x => x.To == target).OrderBy(o => o.From).ToList();
+
+
+            var transactionsContainedInRateTarget = GetTransactionsWhichAreContainedInTheRateTarget(transactionsToCarryToTargetCurrency);
+
+
+            //we are going to work with the transactions which need more than one currency exchange to get the target
+            var transactionsNotContainedInRateTarget = GetTransactionsWhichAreNotContainedInTheRateTarget(transactionsToCarryToTargetCurrency);
+
+            currencyExchangeRatesThatNotMatchTarget = GetRatesWhichAreNotContainedInTheRateTarget(rates, target).Where(t => t.From != target).ToList();
+
+
+
+            ///ESTE ESPACIO ES PARA PRUEBAS
+            List<Transaction> example1 = new List<Transaction>();
+
+
+
+
+            foreach (var transaction in transactionsNotContainedInRateTarget.Where(x => x.Currency == "CAD"))
+            {
+                ExchangeCurrenyToRatesThatMatchTarget(transaction, currencyExchangeRatesThatNotMatchTarget);
+                if (exchangeCurrencyTransaction is not null)
+                    example1.Add(exchangeCurrencyTransaction);
+                //transactionsContainedInRateTarget.Add(exchangeCurrencyTransaction);
+            }
+
+
+
+            ///ESTE ESPACIO ES PARA PRUEBAS
+            var exampleExc = ConvertFromCurrencyRateToCurrencyTarget(example1);
+            var totalExample = CalculateTotalAmountOfProducts(exampleExc);
+
+
+
+
+
+
+            var currenciesExchanged = ConvertFromCurrencyRateToCurrencyTarget(transactionsContainedInRateTarget);
+
+            var totalTransactions = currenciesExchanged.Concat(transactionsInCurrentTarget).ToList();
+            decimal totalAmountCalculated = CalculateTotalAmountOfProducts(totalTransactions);
+
+            return new ProductDto
+            {
+                TotalAmount = totalAmountCalculated,
+                transactions = totalTransactions
+            };
+        }
+
+
+        /// <summary>
+        /// Main method
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="transactions"></param>
+        /// <param name="rates"></param>
+        /// <returns></returns>
         public ProductDto ConvertToCurrencyTarget(string target, List<Transaction> transactions, List<RateModel> rates)
         {
             //gets the currencies which don't need to be converted
@@ -28,7 +96,7 @@ namespace GNB.Domain.domain.services
             var transactionsToCarryToTargetCurrency = transactions.Where(x => x.Currency != target).OrderBy(o => o.Currency).ToList();
 
             //gets the rates which match with the currency target
-            currencyExchangeRatesThatMatchTarget = rates.Where(x => x.To == target).ToList();
+            currencyExchangeRatesThatMatchTarget = rates.Where(x => x.To == target).OrderBy(o => o.From).ToList();
 
 
             var transactionsContainedInRateTarget = GetTransactionsWhichAreContainedInTheRateTarget(transactionsToCarryToTargetCurrency);
@@ -36,23 +104,27 @@ namespace GNB.Domain.domain.services
 
             //we are going to work with the transactions which need more than one currency exchange to get the target
             var transactionsNotContainedInRateTarget = GetTransactionsWhichAreNotContainedInTheRateTarget(transactionsToCarryToTargetCurrency);
-            currencyExchangeRatesThatNotMatchTarget = GetRatesWhichAreNotContainedInTheRateTarget(rates, target);
+
+            currencyExchangeRatesThatNotMatchTarget = GetRatesWhichAreNotContainedInTheRateTarget(rates, target).Where(t => t.From != target).ToList();
 
 
             foreach (var transaction in transactionsNotContainedInRateTarget)
             {
                 ExchangeCurrenyToRatesThatMatchTarget(transaction, currencyExchangeRatesThatNotMatchTarget);
-                transactionsContainedInRateTarget.Add(exchangeCurrencyTransaction);
-            }           
+                if (exchangeCurrencyTransaction is not null)
+                    transactionsContainedInRateTarget.Add(exchangeCurrencyTransaction);
+            }
 
-            var result2 = ConvertFromCurrencyRateToCurrencyTarget(transactionsContainedInRateTarget);
 
-            decimal totalAmountCalculated = CalculateTotalAmountOfProducts(result2);
+            var currenciesExchanged = ConvertFromCurrencyRateToCurrencyTarget(transactionsContainedInRateTarget);
+
+            var totalTransactions = currenciesExchanged.Concat(transactionsInCurrentTarget).ToList();
+            decimal totalAmountCalculated = CalculateTotalAmountOfProducts(totalTransactions);
 
             return new ProductDto
             {
                 TotalAmount = totalAmountCalculated,
-                transactions = result2
+                transactions = totalTransactions
             };
         }
 
@@ -66,7 +138,7 @@ namespace GNB.Domain.domain.services
 
             foreach (var item in ratesItems)
             {
-                exchangeCurrencyTransaction = example(transaction, item);
+                exchangeCurrencyTransaction = ExchangeCurrency(transaction, item);
 
                 if (exchangeCurrencyTransaction == null)
                     continue;
@@ -78,7 +150,7 @@ namespace GNB.Domain.domain.services
             }
         }
 
-        private Transaction example(Transaction transaction, RateModel rate)
+        private Transaction ExchangeCurrency(Transaction transaction, RateModel rate)
         {
             if (currencyExchangeRatesThatMatchTarget.Any(x => x.From == rate.To))
                 return new Transaction { Id = transaction.Id, Sku = transaction.Sku, Currency = rate.To, Amount = transaction.Amount / rate.Rate };
@@ -98,10 +170,10 @@ namespace GNB.Domain.domain.services
             transactions.Where(t => currencyExchangeRatesThatMatchTarget.Any(c => c.From == t.Currency)).ToList();
 
         private List<Transaction> GetTransactionsWhichAreNotContainedInTheRateTarget(List<Transaction> transactions) =>
-            transactions.Where(t => currencyExchangeRatesThatMatchTarget.Any(c => c.From != t.Currency)).ToList();
+            transactions.Where(t => !currencyExchangeRatesThatMatchTarget.Any(c => c.From == t.Currency)).ToList();
 
         private List<RateModel> GetRatesWhichAreNotContainedInTheRateTarget(List<RateModel> rates, string target) =>
-            rates.Where(t => currencyExchangeRatesThatMatchTarget.Any(c => c.From != t.From && t.From != target)).ToList();
+            rates.Where(t => !currencyExchangeRatesThatMatchTarget.Any(c => c.From == t.From)).ToList();
 
 
         private List<Transaction> ConvertFromCurrencyRateToCurrencyTarget(List<Transaction> transactions)

@@ -21,9 +21,7 @@ namespace GNB.Application.application.services
 
         public async Task<ProductDto> GetTransactionsInTargetCurrency(string target, List<Transaction> transactions, List<RateModel> rates)
         {
-            _productDomainService.ConvertToCurrencyTarget(target, transactions, rates);
-
-            return null;
+           return _productDomainService.ConvertToCurrencyTarget(target, transactions, rates);
         }
     }
 }

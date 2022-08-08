@@ -36,22 +36,20 @@ namespace GNB.Api.Controllers
         /// <returns></returns>
 
         [HttpGet("{uskId}")]
-        public async Task<IActionResult> Index(string uskId)
+        public async Task<IActionResult> GetProductsTransactions(string uskId)
         {
             ApiResponse<ProductDto> response = new ApiResponse<ProductDto>();
 
             try
             {
                 var _transactions = await _transactionService.FilterTransactionsByUskId(uskId);
-                //var _rates = await _rateService.GetAllRatesFromProv();
-
                 var _rates = await _rateService.GetAllRatesFromDb();
 
                 string descriptionEnum = Target.EUR.GetEnumDescription(); 
 
-                var products = await _productService.GetTransactionsInTargetCurrency(descriptionEnum, _transactions, _rates.ToList());
+                var productsDto = await _productService.GetTransactionsInTargetCurrency(descriptionEnum, _transactions, _rates.ToList());
 
-                response.Data = null;
+                response.Data = productsDto;
                 response.StatusCode = System.Net.HttpStatusCode.OK;
                 response.ErrorMessage = null;
                 return Ok(response);
