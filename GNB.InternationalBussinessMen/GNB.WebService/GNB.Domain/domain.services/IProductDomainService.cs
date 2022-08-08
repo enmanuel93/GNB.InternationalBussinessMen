@@ -1,4 +1,5 @@
-﻿using GNB.Domain.Entities.Models;
+﻿using GNB.Domain.Entities.DTOs;
+using GNB.Domain.Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace GNB.Domain.domain.services
 {
     public interface IProductDomainService
     {
-        void ConvertToCurrencyTarget(string target, List<Transaction> transactions, List<RateModel> rates);
+        ProductDto ConvertToCurrencyTarget(string target, List<Transaction> transactions, List<RateModel> rates);
     }
 }

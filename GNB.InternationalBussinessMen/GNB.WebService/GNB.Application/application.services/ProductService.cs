@@ -1,5 +1,5 @@
-﻿using GNB.Application.DTOs;
-using GNB.Domain.domain.services;
+﻿using GNB.Domain.domain.services;
+using GNB.Domain.Entities.DTOs;
 using GNB.Domain.Entities.Models;
 using System;
 using System.Collections.Generic;

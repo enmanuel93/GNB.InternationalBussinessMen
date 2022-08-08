@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GNB.Api.DTOs
+namespace GNB.Domain.Entities.DTOs
 {
     public class ProductDto
     {

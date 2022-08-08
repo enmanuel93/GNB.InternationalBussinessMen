@@ -1,4 +1,4 @@
-﻿using GNB.Application.DTOs;
+﻿using GNB.Domain.Entities.DTOs;
 using GNB.Domain.Entities.Enums;
 using GNB.Domain.Entities.Models;
 using System;

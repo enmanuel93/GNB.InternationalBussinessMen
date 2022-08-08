@@ -1,6 +1,6 @@
-﻿using GNB.Api.DTOs;
-using GNB.Api.Helpers;
+﻿using GNB.Api.Helpers;
 using GNB.Application.application.services;
+using GNB.Domain.Entities.DTOs;
 using GNB.Domain.Entities.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
