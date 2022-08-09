@@ -22,9 +22,10 @@ export interface RateProp {
 }
 
 export interface TransactionProp {
-    transactionP: TransactionModule[];
+    transactions: TransactionModule[];
 }
 
 export interface ProductProp {
-    productP: TransactionModule[];
+    totalAmount: number,
+    products: TransactionModule[]
 }

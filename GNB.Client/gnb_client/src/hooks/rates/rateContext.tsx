@@ -1,8 +1,8 @@
 import {createContext} from 'react';
-import { RateModule, RateProp } from "../../modules/interfaces";
+import { RateProp } from "../../modules/interfaces";
 
 type RateContextProp = {
-    rates: RateProp;
+    ratesState: RateProp;
     getAllRates: () => void
 }
 

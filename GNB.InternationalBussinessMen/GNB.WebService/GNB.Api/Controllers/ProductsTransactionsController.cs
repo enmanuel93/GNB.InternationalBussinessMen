@@ -38,26 +38,29 @@ namespace GNB.Api.Controllers
         [HttpGet("{uskId}")]
         public async Task<IActionResult> GetProductsTransactions(string uskId)
         {
-            ApiResponse<ProductDto> response = new ApiResponse<ProductDto>();
+            ProductDto productsDto = new ProductDto();
 
             try
             {
                 var _transactions = await _transactionService.FilterTransactionsByUskId(uskId);
                 var _rates = await _rateService.GetAllRatesFromDb();
 
+                if (!_transactions.Any())
+                    return Ok(new { Message = "There aren't transactions available..." });
+
+                if (!_rates.Any())
+                    return Ok(new { Message = "There aren't rates available..." });
+
                 string descriptionEnum = Target.EUR.GetEnumDescription(); 
 
-                var productsDto = await _productService.GetTransactionsInTargetCurrency(descriptionEnum, _transactions, _rates.ToList());
-
-                response.Data = productsDto;
-                response.StatusCode = System.Net.HttpStatusCode.OK;
-                response.ErrorMessage = null;
-                return Ok(response);
+                productsDto = await _productService.GetTransactionsInTargetCurrency(descriptionEnum, _transactions, _rates.ToList());                
             }
             catch (Exception ex)
             {
                 throw;
-            }            
+            }
+
+            return Ok(productsDto);
         }
     }
 }

@@ -2,44 +2,36 @@ import React, { useReducer, useState } from "react";
 import { ProductContext } from "./ProductContext";
 import ProductReducer from "./productReducer";
 
-import { GET_TRANSACTIONS } from "../types/types";
-import axiosConnection from "../config/axiosConnection";
+import { CALCULATE_PRODUCTS } from "../types/types";
+import { ProductProp } from "../modules/interfaces";
+import axios from "axios";
 
 interface props {
   children: JSX.Element | JSX.Element[];
 }
 
+const initialState: ProductProp = {
+  totalAmount: 0,
+  products: [
+      {
+        id: 0,
+        sku: '',
+        currency: '',
+        amount: 0
+      }
+    ] 
+};
+
 function ProductState({ children }: props) {
-  const [state, dispatch] = ProductReducer();
-
-  const [players, setPlayers] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const getPlayerDate = async () => {
-    try {
-      const data = await axiosConnection.get(
-        "https://nba-players.herokuapp.com/players-stats"
-      );
-      setPlayers(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [productsState, dispatch] = useReducer(ProductReducer, initialState);
 
   const getAllProducts = async () => {
-    //const resultado = await axiosConnection.get("/api/proyectos");
-    const data = await axiosConnection.get(
-      "https://nba-players.herokuapp.com/players-stats"
-    );
-    setPlayers(data.data);
-
-    console.log(players);
-
+    const data = await axios.get(`${process.env.REACT_APP_API_CONNECTION}Rate`);
     try {
-    //   dispatch({
-    //     type: GET_TRANSACTIONS,
-    //     payload: resultado.data,
-    //   });
+        dispatch({
+          type: CALCULATE_PRODUCTS,
+          payload: data.data,
+        });
     } catch (error) {
       console.log(error);
     }
@@ -48,8 +40,8 @@ function ProductState({ children }: props) {
   return (
     <ProductContext.Provider
       value={{
-        productSt: state,
-        getAllProducts: getAllProducts,
+        productsState,
+        getAllProducts,
       }}
     >
       {children}

@@ -2,7 +2,7 @@ import {createContext} from 'react';
 import { RateModule, ProductProp } from "../modules/interfaces";
 
 type RateContextProp = {
-    productSt: ProductProp;
+    productsState: ProductProp;
     getAllProducts: () => void
 }
 

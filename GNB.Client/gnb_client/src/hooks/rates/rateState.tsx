@@ -1,33 +1,37 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { rateContext } from "./rateContext";
 import RateReducer from "./rateReducer";
 
 import { GET_RATES } from "../../types/types";
 import axiosConnection from "../../config/axiosConnection";
 import axios from "axios";
+import { RateModule, RateProp } from "../../modules/interfaces";
 
 interface props {
   children: JSX.Element | JSX.Element[];
 }
 
-function RateState({ children }: props) {
-  const [state, dispatch] = RateReducer();
+const initialState: RateProp = {
+  rates: [
+    {
+      id: 0,
+      from: "",
+      to: "",
+      rate: 0,
+    },
+  ],
+};
 
-  const [players, setPlayers] = useState([]);
-  const [loading, setLoading] = useState(false);
+function RateState({ children }: props) {
+  const [ratesState, dispatch] = useReducer(RateReducer, initialState);
 
   const getAllRates = async () => {
-    console.log(`${process.env.REACT_APP_API_CONNECTION}Rate`);
     const data = await axios.get(`${process.env.REACT_APP_API_CONNECTION}Rate`);
-    
-    //console.log(data.data);
     try {
         dispatch({
           type: GET_RATES,
           payload: data.data,
         });
-
-        console.log(state);
     } catch (error) {
       console.log(error);
     }
@@ -36,8 +40,8 @@ function RateState({ children }: props) {
   return (
     <rateContext.Provider
       value={{
-        rates: state,
-        getAllRates: getAllRates,
+        ratesState,
+        getAllRates,
       }}
     >
       {children}

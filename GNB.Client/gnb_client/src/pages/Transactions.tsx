@@ -6,7 +6,8 @@ import { transactionContext } from "../hooks/transactions/transactionContext";
 import Table from "../components/Table";
 
 function Transactions() {
-  const {transactionSt, getAllTransactions} = useContext(transactionContext);
+  const {transactionsState, getAllTransactions} = useContext(transactionContext);
+  const {transactions} = transactionsState;
 
   const columns = [
     { dataField: "id", text: "ID" },
@@ -24,7 +25,7 @@ function Transactions() {
             <Button type="button" onClick={() => getAllTransactions()}>Load Transactions</Button>
           </div>
 
-          <Table data={[]} columns={columns}/>
+          <Table data={transactions} columns={columns}/>
         </div>
       </Card>
     </>

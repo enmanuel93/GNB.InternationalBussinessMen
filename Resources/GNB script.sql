@@ -21,8 +21,8 @@ GO
 CREATE TABLE GNB.Transactions(
 	Id int identity(1,1) primary key,
 	sku varchar(50),
-	toR varchar(50),
-	currency decimal
+	currency varchar(50),
+	amount decimal
 )
 
 select * from GNB.Rate 

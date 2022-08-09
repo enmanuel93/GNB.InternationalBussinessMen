@@ -2,7 +2,7 @@ import {createContext} from 'react';
 import { TransactionProp } from '../../modules/interfaces';
 
 type TransactionContextProp = {
-    transactionSt: TransactionProp;
+    transactionsState: TransactionProp;
     getAllTransactions: () => void
 }
 
