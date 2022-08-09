@@ -1,12 +1,9 @@
 import {createContext} from 'react';
+import { RateModule, RateProp } from "../../modules/interfaces";
 
-interface propRate {
-    from: string;
-    to: string;
-    rate: number
+type RateContextProp = {
+    rateSt: RateProp;
+    getAllRates: () => void
 }
 
-export const rateContext = createContext({
-    rate: propRate,
-    getAllRates: () => void
-});
+export const rateContext = createContext({} as RateContextProp);

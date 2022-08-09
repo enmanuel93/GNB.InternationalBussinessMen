@@ -1,25 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 import Button from "../components/Button";
 import Card from "../components/Card";
-import { axiosConnection } from "../config/axiosConnection";
-import paginationFactory from "react-bootstrap-table2-paginator";
+import { transactionContext } from "../hooks/transactions/transactionContext";
 import Table from "../components/Table";
 
 function Transactions() {
-  const [players, setPlayers] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const getPlayerDate = async () => {
-    try {
-      const data = await axiosConnection.get(
-        "https://nba-players.herokuapp.com/players-stats"
-      );
-      setPlayers(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const {transactionSt, getAllTransactions} = useContext(transactionContext);
 
   const columns = [
     { dataField: "sku", text: "Sku" },
@@ -33,7 +20,7 @@ function Transactions() {
       <Card cardTitle="List of Transactions">
         <div>
           <div className="button-container">
-            <Button type="button">Load Transactions</Button>
+            <Button type="button" onClick={() => getAllTransactions()}>Load Transactions</Button>
           </div>
 
           <Table data={[]} columns={columns}/>

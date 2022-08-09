@@ -1,3 +1,9 @@
 import {createContext} from 'react';
+import { TransactionProp } from '../../modules/interfaces';
 
-export const transactionContext = createContext({});
+type TransactionContextProp = {
+    transactionSt: TransactionProp;
+    getAllTransactions: () => void
+}
+
+export const transactionContext = createContext({} as TransactionContextProp);

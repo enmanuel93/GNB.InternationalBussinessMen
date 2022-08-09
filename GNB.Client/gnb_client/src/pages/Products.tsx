@@ -1,25 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { FaSearch } from "react-icons/fa";
 import Button from "../components/Button";
 import Card from "../components/Card";
-import { axiosConnection } from "../config/axiosConnection";
-import Table from "../components/Table";
-import { FaSearch } from "react-icons/fa";
 import CustomInput from "../components/CustomInput";
+import Table from "../components/Table";
+
+import { ProductContext } from "../hooks/ProductContext";
 
 function Products() {
-  const [players, setPlayers] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const getPlayerDate = async () => {
-    try {
-      const data = await axiosConnection.get(
-        "https://nba-players.herokuapp.com/players-stats"
-      );
-      setPlayers(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const {productSt, getAllProducts} = useContext(ProductContext);
 
   const columns = [
     { dataField: "sku", text: "Sku" },
@@ -35,7 +24,7 @@ function Products() {
           <div className="button-container">
             <div className="input-container">
               <CustomInput className="col-md-7" placeHolder="Product Id" />
-              <button className="btn btn-primary" style={{marginLeft: 5}}>
+              <button onClick={() => getAllProducts()} className="btn btn-primary" style={{marginLeft: 5}}>
                 <FaSearch />
               </button>
             </div>
