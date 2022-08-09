@@ -6,10 +6,10 @@ export default function Card(prop: cardProps) {
       <div className="container">
         <div
           className="card shadow p-3 mb-5 bg-white rounded"
-          style={{ width: "18rem" }}
+          style={{ width: "100%" }}
         >
           <div className="card-body">
-            <h5 className="card-title">Special title treatment</h5>
+            <h5 className="card-title">{prop.cardTitle}</h5>
             <p className="card-text">              
               {prop.children}
             </p>
@@ -21,5 +21,6 @@ export default function Card(prop: cardProps) {
 }
 
 interface cardProps {
-    children: ReactElement
+    children: ReactElement;
+    cardTitle?: string;
 }

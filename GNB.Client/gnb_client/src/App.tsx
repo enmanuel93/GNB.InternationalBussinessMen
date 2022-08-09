@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
@@ -8,6 +8,7 @@ import Transactions from "./pages/Transactions";
 import Rates from "./pages/Rates";
 
 function App() {
+  
   return (
     <>
       <Router>

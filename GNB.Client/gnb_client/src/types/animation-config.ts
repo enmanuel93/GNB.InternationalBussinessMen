@@ -1,6 +1,6 @@
 export const inputAnimation = {
   hidden: {
-    width: 140,
+    width: 110,
     padding: 0,
   },
   show: {

@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../node_modules/react-bootstrap-table-next/dist/react-bootstrap-table-next';
+import '../node_modules/react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator';
+//import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
