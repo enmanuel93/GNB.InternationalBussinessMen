@@ -18,7 +18,7 @@ export interface ProductModule {
 
 
 export interface RateProp {
-    rateP: RateModule[];
+    rates: RateModule[];
 }
 
 export interface TransactionProp {

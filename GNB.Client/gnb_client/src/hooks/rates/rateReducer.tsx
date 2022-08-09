@@ -19,7 +19,12 @@ type ActionType = {
 const rtReducer = (state: typeof initialState, action: ActionType) => {
   switch (action.type) {
     case GET_RATES:
-      return state;
+      // console.log('example')
+      // console.log(action.payload)
+      return {
+        ...state,
+        rate: action.payload
+      };
     default:
       return state;
   }

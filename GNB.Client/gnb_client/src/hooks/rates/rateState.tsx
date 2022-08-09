@@ -20,12 +20,14 @@ function RateState({ children }: props) {
     console.log(`${process.env.REACT_APP_API_CONNECTION}Rate`);
     const data = await axios.get(`${process.env.REACT_APP_API_CONNECTION}Rate`);
     
-    console.log(data.data);
+    //console.log(data.data);
     try {
         dispatch({
           type: GET_RATES,
           payload: data.data,
         });
+
+        console.log(state);
     } catch (error) {
       console.log(error);
     }
@@ -34,7 +36,7 @@ function RateState({ children }: props) {
   return (
     <rateContext.Provider
       value={{
-        rateSt: state,
+        rates: state,
         getAllRates: getAllRates,
       }}
     >

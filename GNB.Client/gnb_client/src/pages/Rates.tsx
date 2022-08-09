@@ -7,7 +7,6 @@ import { rateContext } from "../hooks/rates/rateContext";
 
 function Rates() {
   const {rateSt, getAllRates} = useContext(rateContext);
-  //const{rateP} = rateSt;
 
   const columns = [
     { dataField: "id", text: "ID" },
@@ -26,7 +25,7 @@ function Rates() {
           <div className="button-container">
             <Button type="button" onClick={() => getAllRates()}>Load Rates</Button>
           </div>
-          {rateSt.length != 0 &&  <Table data={rateSt} columns={columns}/>}
+          <Table data={rateSt} columns={columns}/>
         </div>
       </Card>
     </>
