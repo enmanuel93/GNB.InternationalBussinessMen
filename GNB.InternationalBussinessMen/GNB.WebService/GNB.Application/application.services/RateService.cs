@@ -28,6 +28,9 @@ namespace GNB.Application.application.services
                 var rates = result.ToList();
 
                 await ResetDataFromRateTable(rates);
+
+                //i need to return the values from the db this one contain the id key
+                result = await GetAllRatesFromDb();
                 return result.ToList();
             }
             catch (Exception ex)

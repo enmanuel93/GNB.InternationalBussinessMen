@@ -3,7 +3,7 @@ import { ProductContext } from "./ProductContext";
 import ProductReducer from "./productReducer";
 
 import { GET_TRANSACTIONS } from "../types/types";
-import { axiosConnection } from "../config/axiosConnection";
+import axiosConnection from "../config/axiosConnection";
 
 interface props {
   children: JSX.Element | JSX.Element[];

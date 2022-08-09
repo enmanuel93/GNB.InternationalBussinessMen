@@ -9,6 +9,7 @@ function Transactions() {
   const {transactionSt, getAllTransactions} = useContext(transactionContext);
 
   const columns = [
+    { dataField: "id", text: "ID" },
     { dataField: "sku", text: "Sku" },
     { dataField: "currency", text: "Currency" },
     { dataField: "amount", text: "Amount" },

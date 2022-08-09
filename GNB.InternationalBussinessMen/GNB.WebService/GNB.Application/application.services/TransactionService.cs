@@ -28,6 +28,9 @@ namespace GNB.Application.application.services
                 var transactions = result.ToList();
 
                 await ResetDataFromTransactionTable(transactions);
+
+                //i need to return the values from the db this one contain the id key
+                result = await GetAllTransactionsFromDb();
                 return result.ToList();
             }
             catch (Exception ex)

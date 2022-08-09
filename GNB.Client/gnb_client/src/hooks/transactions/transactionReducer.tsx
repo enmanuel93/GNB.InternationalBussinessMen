@@ -4,6 +4,7 @@ import {GET_TRANSACTIONS} from '../../types/types';
 
 const initialState: TransactionProp = {
     transactionP: [{
+        id: 0,
         sku: '',
         currency: '',
         amount: 0

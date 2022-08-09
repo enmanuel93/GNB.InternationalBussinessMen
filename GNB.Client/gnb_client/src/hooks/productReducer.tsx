@@ -4,6 +4,7 @@ import { RateModule, ProductProp } from "../modules/interfaces";
 
 const initialState: ProductProp = {
     productP: [{
+        id: 0,
         sku: '',
         currency: '',
         amount: 0

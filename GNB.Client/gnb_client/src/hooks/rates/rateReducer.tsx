@@ -2,28 +2,24 @@ import { useReducer } from "react";
 import { GET_RATES } from "../../types/types";
 import { RateModule, RateProp } from "../../modules/interfaces";
 
-const initialState: RateProp = {
-  rateP: [
-    {
-      from: "",
-      to: "",
-      rate: 0,
-    },
-  ],
-};
+const initialState: RateModule[] = [
+  {
+    id: 0,
+    from: "",
+    to: "",
+    rate: 0,
+  },
+];
 
 type ActionType = {
   type: "GET_RATES";
-  payload: RateProp;
+  payload: RateModule[];
 };
 
 const rtReducer = (state: typeof initialState, action: ActionType) => {
   switch (action.type) {
     case GET_RATES:
-      return {
-        ...state,
-        rates: [...state.rateP, action.payload]
-      };
+      return state;
     default:
       return state;
   }

@@ -60,3 +60,5 @@ USD
 
 
 */
+truncate table GNB.Rate
+truncate table GNB.Transactions

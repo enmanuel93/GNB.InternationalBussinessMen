@@ -3,7 +3,8 @@ import { rateContext } from "./rateContext";
 import RateReducer from "./rateReducer";
 
 import { GET_RATES } from "../../types/types";
-import { axiosConnection } from "../../config/axiosConnection";
+import axiosConnection from "../../config/axiosConnection";
+import axios from "axios";
 
 interface props {
   children: JSX.Element | JSX.Element[];
@@ -15,31 +16,16 @@ function RateState({ children }: props) {
   const [players, setPlayers] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const getPlayerDate = async () => {
-    try {
-      const data = await axiosConnection.get(
-        "https://nba-players.herokuapp.com/players-stats"
-      );
-      setPlayers(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const getAllRates = async () => {
-    //const resultado = await axiosConnection.get("/api/proyectos");
-    const data = await axiosConnection.get(
-      "https://nba-players.herokuapp.com/players-stats"
-    );
-    setPlayers(data.data);
-
-    console.log(players);
-
+    console.log(`${process.env.REACT_APP_API_CONNECTION}Rate`);
+    const data = await axios.get(`${process.env.REACT_APP_API_CONNECTION}Rate`);
+    
+    console.log(data.data);
     try {
-    //   dispatch({
-    //     type: GET_RATES,
-    //     payload: resultado.data,
-    //   });
+        dispatch({
+          type: GET_RATES,
+          payload: data.data,
+        });
     } catch (error) {
       console.log(error);
     }

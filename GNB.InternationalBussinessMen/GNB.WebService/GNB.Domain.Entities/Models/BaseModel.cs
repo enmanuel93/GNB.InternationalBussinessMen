@@ -9,7 +9,6 @@ namespace GNB.Domain.Entities.Models
 {
     public abstract class BaseModel
     {
-        [JsonIgnore]
         public int Id { get; set; }
     }
 }

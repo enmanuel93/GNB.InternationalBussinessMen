@@ -7,12 +7,16 @@ import { rateContext } from "../hooks/rates/rateContext";
 
 function Rates() {
   const {rateSt, getAllRates} = useContext(rateContext);
+  //const{rateP} = rateSt;
 
   const columns = [
+    { dataField: "id", text: "ID" },
     { dataField: "from", text: "From" },
     { dataField: "to", text: "To" },
     { dataField: "rate", text: "Rate" },
   ];
+
+  console.log(rateSt);
 
   return (
     <>
@@ -22,8 +26,7 @@ function Rates() {
           <div className="button-container">
             <Button type="button" onClick={() => getAllRates()}>Load Rates</Button>
           </div>
-
-          <Table data={[]} columns={columns}/>
+          {rateSt.length != 0 &&  <Table data={rateSt} columns={columns}/>}
         </div>
       </Card>
     </>

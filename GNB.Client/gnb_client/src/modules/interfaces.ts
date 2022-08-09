@@ -1,10 +1,12 @@
 export interface RateModule {
+    id: number;
     from: string;
     to: string;
     rate: number
 }
 
 export interface TransactionModule {
+    id: number;
     sku: string;
     currency: string;
     amount: number

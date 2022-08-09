@@ -11,6 +11,7 @@ function Products() {
   const {productSt, getAllProducts} = useContext(ProductContext);
 
   const columns = [
+    { dataField: "id", text: "ID" },
     { dataField: "sku", text: "Sku" },
     { dataField: "currency", text: "Currency" },
     { dataField: "amount", text: "Amount" },
