@@ -6,21 +6,23 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Transactions from "./pages/Transactions";
 import Rates from "./pages/Rates";
+import RateState from "./hooks/rates/rateState";
 
 function App() {
-  
   return (
     <>
-      <Router>
-        <Sidebar>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/rates" element={<Rates />} />
-            <Route path="/transactions" element={<Transactions />} />
-          </Routes>
-        </Sidebar>
-      </Router>
+      <RateState>
+        <Router>
+          <Sidebar>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/rates" element={<Rates />} />
+              <Route path="/transactions" element={<Transactions />} />
+            </Routes>
+          </Sidebar>
+        </Router>
+      </RateState>
     </>
   );
 }

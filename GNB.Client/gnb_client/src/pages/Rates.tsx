@@ -1,26 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Button from "../components/Button";
 import Card from "../components/Card";
-import { axiosConnection } from "../config/axiosConnection";
-import * as ReactBootStrap from "react-bootstrap";
-import BootstrapTable from "react-bootstrap-table-next";
-import paginationFactory from "react-bootstrap-table2-paginator";
 import Table from "../components/Table";
 
-function Rates() {
-  const [players, setPlayers] = useState([]);
-  const [loading, setLoading] = useState(false);
+import { rateContext } from "../hooks/rates/rateContext";
 
-  const getPlayerDate = async () => {
-    try {
-      const data = await axiosConnection.get(
-        "https://nba-players.herokuapp.com/players-stats"
-      );
-      setPlayers(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+function Rates() {
+  const {state} = useContext(rateContext);
 
   const columns = [
     { dataField: "from", text: "From" },
