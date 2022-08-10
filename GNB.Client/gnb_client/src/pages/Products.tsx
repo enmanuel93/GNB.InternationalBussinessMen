@@ -3,15 +3,19 @@ import { FaSearch } from "react-icons/fa";
 import Button from "../components/Button";
 import Card from "../components/Card";
 import CustomInput from "../components/CustomInput";
+import ModalMessage from "../components/ModalMessage";
 import Table from "../components/Table";
 
 import { ProductContext } from "../hooks/ProductContext";
+import { modalMessageContext } from "../hooks/usefulContexts/modalMessageContext";
 
 interface productProps {
   id: string;
 }
 
-function Products() {
+function Products() { 
+  const{showModal} = useContext(modalMessageContext);
+
   const [uskId, setUskId] = useState<productProps>({ id: "" });
   const { productsState, getAllProducts, showFields } =
     useContext(ProductContext);
@@ -36,6 +40,7 @@ function Products() {
 
   return (
     <>
+      <ModalMessage show={showModal} title="Error" message="The product Id is required!"/>
       <div className="title">Products</div>
       <Card cardTitle="List of Products">
         <div>

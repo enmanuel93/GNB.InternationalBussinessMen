@@ -19,67 +19,6 @@ namespace GNB.Domain.domain.services
         {
         }
 
-        //DELETE THIS METHOD IS ONLY FOR TESTS
-        public ProductDto ConvertToCurrencyTarget1(string target, List<Transaction> transactions, List<RateModel> rates)
-        {
-            //gets the currencies which don't need to be converted
-            var transactionsInCurrentTarget = transactions.Where(x => x.Currency == target).ToList();
-
-            //gets the currencies which need to be converted
-            var transactionsToCarryToTargetCurrency = transactions.Where(x => x.Currency != target).OrderBy(o => o.Currency).ToList();
-
-            //gets the rates which match with the currency target
-            currencyExchangeRatesThatMatchTarget = rates.Where(x => x.To == target).OrderBy(o => o.From).ToList();
-
-
-            var transactionsContainedInRateTarget = GetTransactionsWhichAreContainedInTheRateTarget(transactionsToCarryToTargetCurrency);
-
-
-            //we are going to work with the transactions which need more than one currency exchange to get the target
-            var transactionsNotContainedInRateTarget = GetTransactionsWhichAreNotContainedInTheRateTarget(transactionsToCarryToTargetCurrency);
-
-            currencyExchangeRatesThatNotMatchTarget = GetRatesWhichAreNotContainedInTheRateTarget(rates, target).Where(t => t.From != target).ToList();
-
-
-
-            ///ESTE ESPACIO ES PARA PRUEBAS
-            List<Transaction> example1 = new List<Transaction>();
-
-
-
-
-            foreach (var transaction in transactionsNotContainedInRateTarget.Where(x => x.Currency == "CAD"))
-            {
-                ExchangeCurrenyToRatesThatMatchTarget(transaction, currencyExchangeRatesThatNotMatchTarget);
-                if (exchangeCurrencyTransaction is not null)
-                    example1.Add(exchangeCurrencyTransaction);
-                //transactionsContainedInRateTarget.Add(exchangeCurrencyTransaction);
-            }
-
-
-
-            ///ESTE ESPACIO ES PARA PRUEBAS
-            var exampleExc = ConvertFromCurrencyRateToCurrencyTarget(example1);
-            var totalExample = CalculateTotalAmountOfProducts(exampleExc);
-
-
-
-
-
-
-            var currenciesExchanged = ConvertFromCurrencyRateToCurrencyTarget(transactionsContainedInRateTarget);
-
-            var totalTransactions = currenciesExchanged.Concat(transactionsInCurrentTarget).ToList();
-            decimal totalAmountCalculated = CalculateTotalAmountOfProducts(totalTransactions);
-
-            return new ProductDto
-            {
-                TotalAmount = totalAmountCalculated,
-                transactions = totalTransactions
-            };
-        }
-
-
         /// <summary>
         /// Main method
         /// </summary>

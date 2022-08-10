@@ -1,10 +1,12 @@
-import React, { useReducer, useState } from "react";
+import React, { useContext, useReducer, useState } from "react";
 import { ProductContext } from "./ProductContext";
 import ProductReducer from "./productReducer";
 
 import { CALCULATE_PRODUCTS } from "../types/types";
 import { ProductProp, ProductModule } from "../modules/interfaces";
 import axios from "axios";
+import { sidebarContext } from "./sidebar/sidebarContext";
+import { modalMessageContext } from "./usefulContexts/modalMessageContext";
 
 interface props {
   children: JSX.Element | JSX.Element[];
@@ -23,13 +25,20 @@ const initialState: ProductModule = {
 };
 
 function ProductState({ children }: props) {
+  const{setModalMsg} = useContext(modalMessageContext);
   const [showfields, setShowFields] = useState<boolean>(false);
-
   const [productsState, dispatch] = useReducer(ProductReducer, initialState);
+  const { setLoading } = useContext(sidebarContext);
 
   const getAllProducts = async (id: string) => {
-    const data = await axios.get(`${process.env.REACT_APP_API_CONNECTION}ProductsTransactions/${id}`);
+    if(id === ''){
+      console.log('Modal')
+      setModalMsg(true);
+      return;
+    }      
 
+    setLoading(true);
+    const data = await axios.get(`${process.env.REACT_APP_API_CONNECTION}ProductsTransactions/${id}`);
     console.log(data.data);
     try {
       dispatch({
@@ -37,7 +46,8 @@ function ProductState({ children }: props) {
         payload: data.data,
       });
 
-      setShowFields(true);
+      setShowFields(false);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
