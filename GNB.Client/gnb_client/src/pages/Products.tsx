@@ -56,7 +56,7 @@ function Products() {
                 <button
                   onClick={() => getAllProducts(uskId.id)}
                   className="btn btn-primary"
-                  style={{ marginLeft: 5, height: "6vh" }}
+                  style={{ marginLeft: 5 }}
                 >
                   <FaSearch />
                 </button>
