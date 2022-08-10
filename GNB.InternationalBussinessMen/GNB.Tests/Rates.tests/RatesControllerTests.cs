@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using Microsoft.Extensions.Logging;
 
 namespace GNB.Tests.Rates.tests
 {
@@ -17,10 +18,13 @@ namespace GNB.Tests.Rates.tests
     public class RatesControllerTests
     {
         private readonly Mock<IRateService> _mockupService;
+        private readonly Mock<ILogger<RateController>> _mLogger;
 
         public RatesControllerTests()
         {
             _mockupService = new Mock<IRateService>();
+            _mLogger = new Mock<ILogger<RateController>>();
+
         }
 
         [Test]
@@ -35,7 +39,7 @@ namespace GNB.Tests.Rates.tests
             };
 
             _mockupService.Setup(m => m.GetAllRatesFromProv()).Returns(Task.FromResult(rates));
-            RateController rateController = new RateController(_mockupService.Object);
+            RateController rateController = new RateController(_mockupService.Object, _mLogger.Object);
 
             IActionResult response = await rateController.GetRates();
             ObjectResult controllerResponse = response as ObjectResult;

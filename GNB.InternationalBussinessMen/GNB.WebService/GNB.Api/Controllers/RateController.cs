@@ -1,6 +1,7 @@
 ﻿using GNB.Application.application.services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,13 @@ namespace GNB.Api.Controllers
     public class RateController : Controller
     {
         private readonly IRateService _rateService;
+        private readonly ILogger<RateController> _logger;
 
-        public RateController(IRateService rateService)
+        public RateController(IRateService rateService, ILogger<RateController> logger)
         {
             this._rateService = rateService;
+            this._logger = logger;
+
         }
 
         [HttpGet]
@@ -27,9 +31,10 @@ namespace GNB.Api.Controllers
                 var result = await _rateService.GetAllRatesFromProv();
                 return Ok(result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                _logger.LogError("Error: ", ex);
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }            
         }
     }

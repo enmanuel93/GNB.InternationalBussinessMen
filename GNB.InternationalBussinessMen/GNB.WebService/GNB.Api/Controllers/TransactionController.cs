@@ -1,6 +1,7 @@
 ﻿using GNB.Application.application.services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,14 @@ namespace GNB.Api.Controllers
     public class TransactionController : Controller
     {
         private readonly ITransactionService _transactionService;
+        private readonly ILogger<TransactionController> _logger;
 
-        public TransactionController(ITransactionService transactionService)
+
+        public TransactionController(ITransactionService transactionService, ILogger<TransactionController> logger)
         {
             this._transactionService = transactionService;
+            this._logger = logger;
+
         }
 
         [HttpGet]
@@ -27,10 +32,10 @@ namespace GNB.Api.Controllers
                 var result = await _transactionService.GetAllTransactionsFromProv();
                 return Ok(result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                _logger.LogError("Error: ", ex);
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }            
         }
     }

@@ -5,6 +5,7 @@ using GNB.Domain.Entities.DTOs;
 using GNB.Domain.Entities.Enums;
 using GNB.Domain.Entities.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -20,13 +21,15 @@ namespace GNB.Tests.Products.tests
         private readonly Mock<IProductService> _mockupService;
         private readonly Mock<IRateService> _mRateService;
         private readonly Mock<ITransactionService> _mTransactionService;
+        private readonly Mock<ILogger<ProductsTransactionsController>> _mLogger;
 
         public ProductsControllerTests()
         {
             _mockupService = new Mock<IProductService>();
             _mRateService = new Mock<IRateService>();
             _mTransactionService = new Mock<ITransactionService>();
-    }
+            _mLogger = new Mock<ILogger<ProductsTransactionsController>>();
+        }
 
         [Test]
         public async Task GetProductsTransactions_IfResultIsNotNull_ReturnOk()
@@ -56,7 +59,7 @@ namespace GNB.Tests.Products.tests
 
 
             _mockupService.Setup(m => m.GetTransactionsInTargetCurrency(target, transactions, rates)).Returns(GetProductDto(transactions, skuId));
-            ProductsTransactionsController rateController = new ProductsTransactionsController(_mRateService.Object, _mTransactionService.Object, _mockupService.Object);
+            ProductsTransactionsController rateController = new ProductsTransactionsController(_mRateService.Object, _mTransactionService.Object, _mockupService.Object, _mLogger.Object);
             
             IActionResult response = await rateController.GetProductsTransactions(skuId);
             ObjectResult controllerResponse = response as ObjectResult;

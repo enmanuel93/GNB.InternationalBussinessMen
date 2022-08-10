@@ -2,6 +2,7 @@
 using GNB.Application.application.services;
 using GNB.Domain.Entities.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -15,10 +16,12 @@ namespace GNB.Tests.Transactions.tests
     public class TransactionControllerTests
     {
         private readonly Mock<ITransactionService> _mockupService;
+        private readonly Mock<ILogger<TransactionController>> _mLogger;
 
         public TransactionControllerTests()
         {
             _mockupService = new Mock<ITransactionService>();
+            _mLogger = new Mock<ILogger<TransactionController>>();
         }
 
         [Test]
@@ -31,7 +34,7 @@ namespace GNB.Tests.Transactions.tests
             };
 
             _mockupService.Setup(m => m.GetAllTransactionsFromProv()).Returns(Task.FromResult(transactions));
-            TransactionController rateController = new TransactionController(_mockupService.Object);
+            TransactionController rateController = new TransactionController(_mockupService.Object, _mLogger.Object);
 
             IActionResult response = await rateController.GetTransactions();
             ObjectResult controllerResponse = response as ObjectResult;
