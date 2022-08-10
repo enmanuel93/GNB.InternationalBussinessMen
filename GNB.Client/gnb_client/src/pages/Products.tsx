@@ -13,10 +13,9 @@ interface productProps {
 
 function Products() {
   const [uskId, setUskId] = useState<productProps>({ id: "" });
-  const { productsState, getAllProducts } = useContext(ProductContext);
-  const {
-    transactions, totalAmount ,
-  } = productsState;
+  const { productsState, getAllProducts, showFields } =
+    useContext(ProductContext);
+  const { transactions, totalAmount } = productsState;
 
   const columns = [
     { dataField: "id", text: "ID" },
@@ -33,10 +32,7 @@ function Products() {
     });
   };
 
-  useEffect(() => {
-    if(productsState.transactions.length)
-      console.log(productsState);
-  }, [productsState])
+  useEffect(() => {}, [productsState]);
 
   return (
     <>
@@ -44,24 +40,34 @@ function Products() {
       <Card cardTitle="List of Products">
         <div>
           <div className="button-container">
-            <div className="input-container">
-              <CustomInput
-                name="id"
-                onChange={handleChange}
-                className="col-md-7"
-                placeHolder="Product Id"
-              />
-              <button
-                onClick={() => getAllProducts(uskId.id)}
-                className="btn btn-primary"
-                style={{ marginLeft: 5 }}
-              >
-                <FaSearch />
-              </button>
+            <div className="input-content">
+              <div className="input-container">
+                <CustomInput
+                  name="id"
+                  onChange={handleChange}
+                  className="col-md-7"
+                  placeHolder="Product Id"
+                />
+                <button
+                  onClick={() => getAllProducts(uskId.id)}
+                  className="btn btn-primary"
+                  style={{ marginLeft: 5, height: "6vh" }}
+                >
+                  <FaSearch />
+                </button>
+              </div>
+
+              <div>
+                <p>Amount of Products: {`$ ${totalAmount}`}</p>
+              </div>
             </div>
           </div>
 
-          <Table data={transactions} columns={columns} />
+          {showFields ? (
+            <Table data={transactions} columns={columns} />
+          ) : (
+            <Table data={[]} columns={columns} />
+          )}
         </div>
       </Card>
     </>

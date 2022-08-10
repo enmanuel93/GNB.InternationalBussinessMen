@@ -6,7 +6,7 @@ import Table from "../components/Table";
 import { rateContext } from "../hooks/rates/rateContext";
 
 function Rates() {
-  const {ratesState, getAllRates} = useContext(rateContext);
+  const {ratesState, getAllRates, showFields} = useContext(rateContext);
   const {rates} = ratesState;
 
   const columns = [    
@@ -24,7 +24,11 @@ function Rates() {
           <div className="button-container">
             <Button type="button" onClick={() => getAllRates()}>Load Rates</Button>
           </div>
-          <Table data={rates} columns={columns}/>
+          {showFields ? (
+            <Table data={rates} columns={columns} />
+          ) : (
+            <Table data={[]} columns={columns} />
+          )}
         </div>
       </Card>
     </>

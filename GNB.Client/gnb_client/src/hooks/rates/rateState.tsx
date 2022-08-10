@@ -23,6 +23,7 @@ const initialState: RateProp = {
 };
 
 function RateState({ children }: props) {
+  const [showfields, setShowFields] = useState<boolean>(false);
   const [ratesState, dispatch] = useReducer(RateReducer, initialState);
 
   const getAllRates = async () => {
@@ -32,6 +33,7 @@ function RateState({ children }: props) {
           type: GET_RATES,
           payload: data.data,
         });
+        setShowFields(true);
     } catch (error) {
       console.log(error);
     }
@@ -42,6 +44,7 @@ function RateState({ children }: props) {
       value={{
         ratesState,
         getAllRates,
+        showFields: showfields
       }}
     >
       {children}

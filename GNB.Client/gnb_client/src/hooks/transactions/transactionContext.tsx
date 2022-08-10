@@ -3,7 +3,8 @@ import { TransactionProp } from '../../modules/interfaces';
 
 type TransactionContextProp = {
     transactionsState: TransactionProp;
-    getAllTransactions: () => void
+    getAllTransactions: () => void;
+    showFields: boolean;
 }
 
 export const transactionContext = createContext({} as TransactionContextProp);

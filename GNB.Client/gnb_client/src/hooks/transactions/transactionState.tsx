@@ -23,6 +23,7 @@ const initialState: TransactionProp = {
 };
 
 function TransactionState({ children }: props) {
+  const [showfields, setShowFields] = useState<boolean>(false);
   const [transactionsState, dispatch] = useReducer(TransactionReducer, initialState);
 
   const getAllTransactions = async () => {
@@ -32,6 +33,7 @@ function TransactionState({ children }: props) {
           type: GET_TRANSACTIONS,
           payload: data.data,
         });
+        setShowFields(true);
     } catch (error) {
       console.log(error);
     }
@@ -42,6 +44,7 @@ function TransactionState({ children }: props) {
       value={{
         transactionsState,
         getAllTransactions,
+        showFields: showfields
       }}
     >
       {children}

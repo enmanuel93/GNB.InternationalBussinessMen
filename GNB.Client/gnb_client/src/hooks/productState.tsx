@@ -23,6 +23,8 @@ const initialState: ProductModule = {
 };
 
 function ProductState({ children }: props) {
+  const [showfields, setShowFields] = useState<boolean>(false);
+
   const [productsState, dispatch] = useReducer(ProductReducer, initialState);
 
   const getAllProducts = async (id: string) => {
@@ -34,6 +36,8 @@ function ProductState({ children }: props) {
         type: CALCULATE_PRODUCTS,
         payload: data.data,
       });
+
+      setShowFields(true);
     } catch (error) {
       console.log(error);
     }
@@ -44,6 +48,7 @@ function ProductState({ children }: props) {
       value={{
         productsState,
         getAllProducts,
+        showFields: showfields
       }}
     >
       {children}
