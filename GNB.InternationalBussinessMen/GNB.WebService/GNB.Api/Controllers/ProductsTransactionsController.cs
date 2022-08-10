@@ -45,11 +45,11 @@ namespace GNB.Api.Controllers
                 var _transactions = await _transactionService.FilterTransactionsByUskId(uskId);
                 var _rates = await _rateService.GetAllRatesFromDb();
 
-                if (!_transactions.Any())
-                    return Ok(new { Message = "There aren't transactions available..." });
+                //if (!_transactions.Any())
+                //    return Ok(new { Message = "There aren't transactions available..." });
 
-                if (!_rates.Any())
-                    return Ok(new { Message = "There aren't rates available..." });
+                //if (!_rates.Any())
+                //    return Ok(new { Message = "There aren't rates available..." });
 
                 string descriptionEnum = Target.EUR.GetEnumDescription(); 
 

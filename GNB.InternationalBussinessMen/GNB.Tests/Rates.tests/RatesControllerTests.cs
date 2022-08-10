@@ -28,8 +28,10 @@ namespace GNB.Tests.Rates.tests
         {
             var rates = new List<RateModel>()
             {
-                new RateModel(){ From ="EUR", To="USD", Rate = 1.359m},
-                new RateModel(){ From ="CAD", To ="EUR", Rate = 0.732m},
+                new RateModel(){ From ="USD", To="EUR", Rate = 1.4400m},
+                new RateModel(){ From ="USD", To ="CAD", Rate = 0.6900m},
+                new RateModel(){ From ="CAD", To="USD", Rate = 0.9900m},
+                new RateModel(){ From ="AUD", To ="EUR", Rate = 1.0100m},
             };
 
             _mockupService.Setup(m => m.GetAllRatesFromProv()).Returns(Task.FromResult(rates));
