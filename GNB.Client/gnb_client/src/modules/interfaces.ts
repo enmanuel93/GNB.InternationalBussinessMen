@@ -13,7 +13,8 @@ export interface TransactionModule {
 }
 
 export interface ProductModule {
-    total: number;
+    totalAmount: number;
+    transactions: TransactionModule[];
 }
 
 
@@ -26,6 +27,5 @@ export interface TransactionProp {
 }
 
 export interface ProductProp {
-    totalAmount: number,
-    products: TransactionModule[]
+    products: ProductModule
 }

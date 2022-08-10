@@ -3,7 +3,7 @@ import { ProductContext } from "./ProductContext";
 import ProductReducer from "./productReducer";
 
 import { CALCULATE_PRODUCTS } from "../types/types";
-import { ProductProp } from "../modules/interfaces";
+import { ProductProp, ProductModule } from "../modules/interfaces";
 import axios from "axios";
 
 interface props {
@@ -11,27 +11,30 @@ interface props {
 }
 
 const initialState: ProductProp = {
-  totalAmount: 0,
-  products: [
+  products: {
+    totalAmount: 0,
+    transactions: [
       {
         id: 0,
-        sku: '',
-        currency: '',
-        amount: 0
-      }
-    ] 
+        sku: "",
+        currency: "",
+        amount: 0,
+      },
+    ],
+  },
 };
 
 function ProductState({ children }: props) {
   const [productsState, dispatch] = useReducer(ProductReducer, initialState);
 
-  const getAllProducts = async () => {
-    const data = await axios.get(`${process.env.REACT_APP_API_CONNECTION}Rate`);
+  const getAllProducts = async (id: string) => {
+    console.log(id);
+    //const data = await axios.post(`${process.env.REACT_APP_API_CONNECTION}ProductsTransactions`, id);
     try {
-        dispatch({
-          type: CALCULATE_PRODUCTS,
-          payload: data.data,
-        });
+      // dispatch({
+      //   type: CALCULATE_PRODUCTS,
+      //   payload: data.data,
+      // });
     } catch (error) {
       console.log(error);
     }

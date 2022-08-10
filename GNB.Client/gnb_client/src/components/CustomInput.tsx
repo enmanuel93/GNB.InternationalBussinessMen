@@ -5,8 +5,9 @@ export default function CustomInput(props: InputProps) {
     <div className={props.className}>
       <input
         type="text"
-        className="form-control"
-        id="validationCustom03"
+        className={`form-control ${props.className}`}
+        onChange={props.onChange}
+        name={props.name}
         placeholder={props.placeHolder}
         required
       />
@@ -18,4 +19,6 @@ export default function CustomInput(props: InputProps) {
 interface InputProps {
   className: string;
   placeHolder?: string;
+  name: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void 
 }

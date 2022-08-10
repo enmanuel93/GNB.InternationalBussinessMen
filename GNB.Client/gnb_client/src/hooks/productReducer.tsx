@@ -1,19 +1,21 @@
 import { useReducer } from "react";
 import { CALCULATE_PRODUCTS } from "../types/types";
-import { RateModule, ProductProp } from "../modules/interfaces";
+import { RateModule, ProductProp, ProductModule } from "../modules/interfaces";
 
 type ActionType = {
   type: "CALCULATE_PRODUCTS";
   payload: ProductProp;
 };
 
-const ProductReducer = (state: ProductProp, action: ActionType) => {
+const ProductReducer = (state: ProductProp, action: ActionType): ProductProp => {
   switch (action.type) {
     case CALCULATE_PRODUCTS:
-      return {
-        ...state,
-        totalAmount: action.payload.totalAmount,
-        products: [...state.products, action.payload]
+      return {        
+        products: {    
+          ...state,      
+          totalAmount: action.payload.products.totalAmount,
+          transactions: [...action.payload.products.transactions]
+        }
       };
     default:
       return state;

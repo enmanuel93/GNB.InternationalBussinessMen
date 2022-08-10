@@ -7,8 +7,14 @@ import Table from "../components/Table";
 
 import { ProductContext } from "../hooks/ProductContext";
 
+interface productProps {
+  id: string
+}
+
 function Products() {
-  const {productSt, getAllProducts} = useContext(ProductContext);
+  const[uskId, setUskId] = useState<productProps>({id: ''});
+  const {productsState, getAllProducts} = useContext(ProductContext);
+  const{products: {transactions, totalAmount}} = productsState;
 
   const columns = [
     { dataField: "id", text: "ID" },
@@ -17,6 +23,14 @@ function Products() {
     { dataField: "amount", text: "Amount" },
   ];
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const {name, value} = e.target;
+    setUskId({
+      ...uskId,
+      [name]: value
+    })
+  }
+
   return (
     <>
       <div className="title">Products</div>
@@ -24,14 +38,14 @@ function Products() {
         <div>
           <div className="button-container">
             <div className="input-container">
-              <CustomInput className="col-md-7" placeHolder="Product Id" />
-              <button onClick={() => getAllProducts()} className="btn btn-primary" style={{marginLeft: 5}}>
+              <CustomInput name="id" onChange={handleChange} className="col-md-7" placeHolder="Product Id" />
+              <button onClick={() => getAllProducts(uskId.id)} className="btn btn-primary" style={{marginLeft: 5}}>
                 <FaSearch />
               </button>
             </div>
           </div>
 
-          <Table data={[]} columns={columns} />
+          <Table data={transactions} columns={columns} />
         </div>
       </Card>
     </>

@@ -3,7 +3,7 @@ import { RateModule, ProductProp } from "../modules/interfaces";
 
 type RateContextProp = {
     productsState: ProductProp;
-    getAllProducts: () => void
+    getAllProducts: (id: string) => void
 }
 
 export const ProductContext = createContext({} as RateContextProp);
