@@ -13,7 +13,7 @@ CREATE TABLE GNB.Rate(
 	Id int identity(1,1) primary key,
 	fromR varchar(50),
 	toR varchar(50),
-	rate decimal
+	rate decimal(11,4)
 )
 
 GO
@@ -22,7 +22,7 @@ CREATE TABLE GNB.Transactions(
 	Id int identity(1,1) primary key,
 	sku varchar(50),
 	currency varchar(50),
-	amount decimal
+	amount decimal(11,4)
 )
 
 select * from GNB.Rate 
