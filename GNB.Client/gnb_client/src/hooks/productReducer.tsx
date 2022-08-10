@@ -4,18 +4,17 @@ import { RateModule, ProductProp, ProductModule } from "../modules/interfaces";
 
 type ActionType = {
   type: "CALCULATE_PRODUCTS";
-  payload: ProductProp;
+  payload: ProductModule;
 };
 
-const ProductReducer = (state: ProductProp, action: ActionType): ProductProp => {
+const ProductReducer = (state: ProductModule, action: ActionType): ProductModule => {
   switch (action.type) {
     case CALCULATE_PRODUCTS:
-      return {        
-        products: {    
-          ...state,      
-          totalAmount: action.payload.products.totalAmount,
-          transactions: [...action.payload.products.transactions]
-        }
+      console.log(action.payload)
+      return {   
+        ...state,
+        totalAmount: action.payload.totalAmount,
+        transactions: [...action.payload.transactions]
       };
     default:
       return state;

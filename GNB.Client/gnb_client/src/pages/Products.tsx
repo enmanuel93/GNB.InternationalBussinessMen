@@ -8,13 +8,15 @@ import Table from "../components/Table";
 import { ProductContext } from "../hooks/ProductContext";
 
 interface productProps {
-  id: string
+  id: string;
 }
 
 function Products() {
-  const[uskId, setUskId] = useState<productProps>({id: ''});
-  const {productsState, getAllProducts} = useContext(ProductContext);
-  const{products: {transactions, totalAmount}} = productsState;
+  const [uskId, setUskId] = useState<productProps>({ id: "" });
+  const { productsState, getAllProducts } = useContext(ProductContext);
+  const {
+    transactions, totalAmount ,
+  } = productsState;
 
   const columns = [
     { dataField: "id", text: "ID" },
@@ -24,12 +26,17 @@ function Products() {
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setUskId({
       ...uskId,
-      [name]: value
-    })
-  }
+      [name]: value,
+    });
+  };
+
+  useEffect(() => {
+    if(productsState.transactions.length)
+      console.log(productsState);
+  }, [productsState])
 
   return (
     <>
@@ -38,8 +45,17 @@ function Products() {
         <div>
           <div className="button-container">
             <div className="input-container">
-              <CustomInput name="id" onChange={handleChange} className="col-md-7" placeHolder="Product Id" />
-              <button onClick={() => getAllProducts(uskId.id)} className="btn btn-primary" style={{marginLeft: 5}}>
+              <CustomInput
+                name="id"
+                onChange={handleChange}
+                className="col-md-7"
+                placeHolder="Product Id"
+              />
+              <button
+                onClick={() => getAllProducts(uskId.id)}
+                className="btn btn-primary"
+                style={{ marginLeft: 5 }}
+              >
                 <FaSearch />
               </button>
             </div>

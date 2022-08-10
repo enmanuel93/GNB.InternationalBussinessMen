@@ -1,8 +1,8 @@
 import {createContext} from 'react';
-import { RateModule, ProductProp } from "../modules/interfaces";
+import { ProductModule, ProductProp } from "../modules/interfaces";
 
 type RateContextProp = {
-    productsState: ProductProp;
+    productsState: ProductModule;
     getAllProducts: (id: string) => void
 }
 

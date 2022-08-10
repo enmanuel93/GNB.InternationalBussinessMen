@@ -10,8 +10,7 @@ interface props {
   children: JSX.Element | JSX.Element[];
 }
 
-const initialState: ProductProp = {
-  products: {
+const initialState: ProductModule = {
     totalAmount: 0,
     transactions: [
       {
@@ -21,20 +20,20 @@ const initialState: ProductProp = {
         amount: 0,
       },
     ],
-  },
 };
 
 function ProductState({ children }: props) {
   const [productsState, dispatch] = useReducer(ProductReducer, initialState);
 
   const getAllProducts = async (id: string) => {
-    console.log(id);
-    //const data = await axios.post(`${process.env.REACT_APP_API_CONNECTION}ProductsTransactions`, id);
+    const data = await axios.get(`${process.env.REACT_APP_API_CONNECTION}ProductsTransactions/${id}`);
+
+    console.log(data.data);
     try {
-      // dispatch({
-      //   type: CALCULATE_PRODUCTS,
-      //   payload: data.data,
-      // });
+      dispatch({
+        type: CALCULATE_PRODUCTS,
+        payload: data.data,
+      });
     } catch (error) {
       console.log(error);
     }
