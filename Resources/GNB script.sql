@@ -29,7 +29,6 @@ select * from GNB.Rate
 where fromR != 'EUR'
 
 select * from GNB.Rate 
-where fromR = 'CAD'
 
 select distinct sku from GNB.Transactions 
 
