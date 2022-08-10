@@ -1,1 +1,11 @@
 # GNB.InternationalBussinessMen
+![loading](https://user-images.githubusercontent.com/16734057/183831694-62026257-1ac7-4d6d-b380-b047f1111a22.PNG)
+![web home](https://user-images.githubusercontent.com/16734057/183831680-2dc5c300-539f-4e4c-9dfc-9edc8486f6ab.PNG)
+![web sidebar](https://user-images.githubusercontent.com/16734057/183831721-754e9ee6-b607-4f21-84c9-4c242c0e1bfd.PNG)
+![rates module](https://user-images.githubusercontent.com/16734057/183831743-d41203bd-f1a2-4ede-b1d7-f80f700d512c.PNG)
+![rates module data](https://user-images.githubusercontent.com/16734057/183831744-3380a54d-8d79-4d59-8b99-e9a41e84701a.PNG)
+![transaction module](https://user-images.githubusercontent.com/16734057/183831758-d85490b0-ed0c-4419-88dc-5f4f976e74aa.PNG)
+![transaction module data](https://user-images.githubusercontent.com/16734057/183831763-400b2b29-ae9f-49a8-a914-0cfb351eb6c3.PNG)
+![products module](https://user-images.githubusercontent.com/16734057/183831774-57dd43e9-81e2-4e77-9d52-8c2012e7bee3.PNG)
+![modal id validation](https://user-images.githubusercontent.com/16734057/183831803-167a9feb-ca5c-4afb-bbee-82042ace39f1.PNG)
+![products module result](https://user-images.githubusercontent.com/16734057/183831810-dd0e7f6c-e298-4cc4-b392-d403f3795bdc.PNG)
