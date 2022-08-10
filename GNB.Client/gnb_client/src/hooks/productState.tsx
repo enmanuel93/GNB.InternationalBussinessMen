@@ -46,7 +46,7 @@ function ProductState({ children }: props) {
         payload: data.data,
       });
 
-      setShowFields(false);
+      setShowFields(true);
       setLoading(false);
     } catch (error) {
       console.log(error);
